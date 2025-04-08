@@ -4,21 +4,21 @@ from datetime import datetime
 def setup_page_config():
     """Configure the Streamlit page settings"""
     st.set_page_config(
-        page_title="Apna Jyotish - Personal Astrology Guide",
+        page_title="Astro Jyo - Personal Astrology Guide",
         page_icon="🌟"
     )
 
 def display_header():
     """Display the application header"""
-    st.title("🌟 Apna Jyotish")
+    st.title("🌟 Astro Jyo")
     st.subheader("Your Personal Astrology Guide")
 
 def get_birth_details():
     """
-    Get birth date and time from user input
+    Get birth date, time, and place from user input
     
     Returns:
-        tuple: (formatted_date, formatted_time)
+        tuple: (formatted_date, formatted_time, place_of_birth)
     """
     col1, col2 = st.columns(2)
 
@@ -27,10 +27,13 @@ def get_birth_details():
 
     with col2:
         birth_time = st.time_input("Time of Birth")
+    
+    place_of_birth = st.text_input("Place of Birth", placeholder="Enter City")
         
     return (
         birth_date.strftime("%B %d, %Y"),
-        birth_time.strftime("%H:%M")
+        birth_time.strftime("%H:%M"),
+        place_of_birth
     )
 
 def get_life_aspect():
